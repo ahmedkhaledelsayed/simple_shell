@@ -12,18 +12,18 @@
 
 int _fork(char **arg, char **av, char **env, char *lineptr, int np, int c)
 {
-	pid_t c;
+	pid_t child;
 	int stat;
 	char *format = "%s: %d: %s: not found\n";
 
-	c = fork();
+	child = fork();
 
-	if (c == 0)
+	if (child == 0)
 	{
 		if (execve(arg[0], arg, env) == -1)
 		{
 			fprintf(stderr, format, av[0], np, arg[0]);
-			if (!c)
+			if (!child)
 				free(arg[0]);
 			free(arg);
 			free(lineptr);
