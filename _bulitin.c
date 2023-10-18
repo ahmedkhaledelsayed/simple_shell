@@ -24,12 +24,12 @@ void _exit_fun(char **arg, char *lineptr, int _exit)
 }
 
 /**
- *_getenv - function to get all env
+ *_env_func - function to get all env
  *@env: enviroment
  *Return: 0
  */
 
-void _getenv(char **env)
+void _env_func(char **env)
 {
 	size_t run = 0;
 
