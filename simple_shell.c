@@ -14,7 +14,7 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-		getcommand = _getline_command();
+		getcommand = _getline();
 		if (getcommand)
 		{
 			pathValue++;
