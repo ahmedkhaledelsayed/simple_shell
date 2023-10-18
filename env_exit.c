@@ -1,14 +1,14 @@
 #include "shell.h"
 /**
- * _exit_command - this function closes the simple_shell when
+ * exit_fun - function that exits the shell
  * @arg: pointer with the direction argument.
  * @lineptr: standar input string
  * @_exit: value of exit
  * Return: None
  */
-void _exit_command(char **arg, char *lineptr, int _exit)
+void exit_fun(char **arg, char *lineptr, int _exit)
 {
-	int exit_status = 0;
+	int exit_stat = 0;
 
 	if (!arg[1])
 	{
@@ -16,7 +16,7 @@ void _exit_command(char **arg, char *lineptr, int _exit)
 		free(arg);
 		exit(_exit);
 	}
-	exit_status = atoi(arg[1]);
+	exit_stat = atoi(arg[1]);
 
 	free(lineptr);
 	free(arg);
@@ -24,19 +24,19 @@ void _exit_command(char **arg, char *lineptr, int _exit)
 }
 
 /**
- *_getenv - function to get all env
+ *env_fun - function to get env to be printed
  *@env: enviroment
  *Return: 0
  */
 
-void _getenv(char **env)
+void env_fun(char **env)
 {
-	size_t run = 0;
+	size_t r = 0;
 
 	while (env[run])
 	{
-		write(STDOUT_FILENO, env[run], _strlen(env[run]));
+		write(STDOUT_FILENO, env[r], _strlen(env[r]));
 		write(STDOUT_FILENO, "\n", 1);
-		run++;
+		r++;
 	}
 }
