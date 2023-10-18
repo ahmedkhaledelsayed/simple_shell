@@ -18,7 +18,7 @@ int main(int ac, char **av, char **env)
 		if (getcommand)
 		{
 			pathValue++;
-			user_command = _get_token(getcommand);
+			user_command = _token(getcommand);
 			if (!user_command)
 			{
 				free(getcommand);
