@@ -8,7 +8,7 @@
  */
 void _exit_fun(char **arg, char *lineptr, int _exit)
 {
-	int exit_status = 0;
+	int status = 0;
 
 	if (!arg[1])
 	{
@@ -16,11 +16,11 @@ void _exit_fun(char **arg, char *lineptr, int _exit)
 		free(arg);
 		exit(_exit);
 	}
-	exit_status = atoi(arg[1]);
+	status = atoi(arg[1]);
 
 	free(lineptr);
 	free(arg);
-	exit(exit_status);
+	exit(status);
 }
 
 /**
