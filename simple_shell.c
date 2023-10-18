@@ -18,14 +18,14 @@ int main(int ac, char **av, char **env)
 		if (getcommand)
 		{
 			pathValue++;
-			user_command = _token(getcommand);
+			user_command = _get_token(getcommand);
 			if (!user_command)
 			{
 				free(getcommand);
 				continue;
 			}
 			if ((!_strcmp(user_command[0], "exit")) && user_command[1] == NULL)
-				_exit(user_command, getcommand, _exit);
+				_exit_command(user_command, getcommand, _exit);
 			if (!_strcmp(user_command[0], "env"))
 				_getenv(env);
 			else
