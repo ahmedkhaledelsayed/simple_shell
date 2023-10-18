@@ -24,7 +24,7 @@ char *_get_path(char **env);
 int _values_path(char **arg, char **env);
 char *_getline(void);
 void _getenv(char **env);
-char **_get_token(char *lineptr);
+char **_token(char *lineptr);
 void _exit_fun(char **args, char *lineptr, int _exit);
 int _fork(char **arg, char **av, char **env,
 char *lineptr, int np, int c);
