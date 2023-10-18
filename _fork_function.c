@@ -12,13 +12,13 @@
 
 int _fork(char **arg, char **av, char **env, char *lineptr, int np, int c)
 {
-	pid_t c;
-	int stat;
+	pid_t child;
+	int status;
 	char *format = "%s: %d: %s: not found\n";
 
-	c = fork();
+	child = fork();
 
-	if (c == 0)
+	if (child == 0)
 	{
 		if (execve(arg[0], arg, env) == -1)
 		{
@@ -32,10 +32,10 @@ int _fork(char **arg, char **av, char **env, char *lineptr, int np, int c)
 	}
 	else
 	{
-		wait(&stat);
+		wait(&status);
 
-		if (WIFEXITED(stat) && WEXITstat(stat) != 0)
-			return (WEXITstat(stat));
+		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+			return (WEXITSTATUS(status));
 	}
 	return (0);
 }
