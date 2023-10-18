@@ -1,18 +1,18 @@
 #include "shell.h"
 /**
- * getline_func - print "#cisfun$ " and wait for the user type something.
+ * _getline_command - print "#cisfun$ " and wait for the user type something.
  * Return: line of string input for user
  */
 
-char *getline_func(void)
+char *_getline_command(void)
 {
 	char *lineptr = NULL;
-	size_t user_in = 0;
+	size_t charter_user = 0;
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
 
-	if (getline(&lineptr, &user_in, stdin) == -1)
+	if (getline(&lineptr, &charter_user, stdin) == -1)
 	{
 		free(lineptr);
 		return (NULL);
