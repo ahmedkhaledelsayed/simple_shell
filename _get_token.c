@@ -1,13 +1,13 @@
 #include "shell.h"
 /**
- * get_token - get token of string
- * @lineptr: command user
+ * _get_token - get token of string
+ * @lineptr: comman user
  * Return: To a pointer
  */
 
-char **get_token(char *lineptr)
+char **_get_token(char *lineptr)
 {
-	char **command = NULL;
+	char **user_command = NULL;
 	char *token = NULL;
 	size_t i = 0;
 	int size = 0;
@@ -21,21 +21,17 @@ char **get_token(char *lineptr)
 			size++;
 	}
 	if ((size + 1) == _strlen(lineptr))
-	{
 		return (NULL);
-	}
-	command = malloc(sizeof(char *) * (size + 2));
-	if (command == NULL)
-	{
+	user_command = malloc(sizeof(char *) * (size + 2));
+	if (user_command == NULL)
 		return (NULL);
-	}
 
 	token = _strtok(lineptr, " \n\t\r");
 	for (i = 0; token != NULL; i++)
 	{
-		command[i] = token;
+		user_command[i] = token;
 		token = _strtok(NULL, " \n\t\r");
 	}
-	command[i] = NULL;
+	user_command[i] = NULL;
 	return (user_command);
 }
