@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * fork_create - function that create a fork
+ * _fork_fun - function that create a fork
  *@arg: command and values path
  *@av: Has the name of our program
  *@env: environment
@@ -10,7 +10,7 @@
  *Return: 0 success
  */
 
-int fork_create(char **arg, char **av, char **env, char *lineptr, int np, int c)
+int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 {
 	pid_t child;
 	int status;
