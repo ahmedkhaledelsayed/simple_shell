@@ -4,46 +4,46 @@
  * @ac:count of argumnents
  * @av: arguments
  * @env: environment
- * Return: _exit = 0.
+ * Return: exit = 0.
  */
 int main(int ac, char **av, char **env)
 {
-	char *getcommand = NULL, **user_command = NULL;
-	int pathValue = 0, _exit = 0, n = 0;
+	char *getcommand = NULL, **input_command = NULL;
+	int path_value = 0, exit = 0, n = 0;
 	(void)ac;
 
 	while (1)
 	{
-		getcommand = _getline_command();
+		getcommand = getline_func();
 		if (getcommand)
 		{
-			pathValue++;
-			user_command = _get_token(getcommand);
-			if (!user_command)
+			path_value++;
+			input_command = token_func(getcommand);
+			if (!input_command)
 			{
 				free(getcommand);
 				continue;
 			}
-			if ((!_strcmp(user_command[0], "exit")) && user_command[1] == NULL)
-				_exit_command(user_command, getcommand, _exit);
-			if (!_strcmp(user_command[0], "env"))
+			if ((!_strcmp(input_command[0], "exit")) && input_command[1] == NULL)
+				exit_func(input_command, getcommand, exit);
+			if (!_strcmp(input_command[0], "env"))
 				_getenv(env);
 			else
 			{
-				n = _values_path(&user_command[0], env);
-				_exit = _fork_fun(user_command, av, env, getcommand, pathValue, n);
+				n = _values_path(&input_command[0], env);
+				exit = fork_create(input_command, av, env, getcommand, path_value, n);
 				if (n == 0)
-					free(user_command[0]);
+					free(input_command[0]);
 			}
-			free(user_command);
+			free(input_command);
 		}
 		else
 		{
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
-			exit(_exit);
+			exit(exit);
 		}
 		free(getcommand);
 	}
-	return (_exit);
+	return (exit);
 }

@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * _fork_fun - function that create a fork
+ * fork_create - function that create a fork
  *@arg: command and values path
  *@av: Has the name of our program
  *@env: environment
@@ -10,15 +10,15 @@
  *Return: 0 success
  */
 
-int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
+int fork_create(char **arg, char **av, char **env, char *lineptr, int np, int c)
 {
-	pid_t child;
+	pid_t sub;
 	int status;
 	char *format = "%s: %d: %s: not found\n";
 
-	child = fork();
+	sub = fork();
 
-	if (child == 0)
+	if (sub == 0)
 	{
 		if (execve(arg[0], arg, env) == -1)
 		{
