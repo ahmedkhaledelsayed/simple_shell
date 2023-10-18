@@ -14,11 +14,11 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-		getcommand = _getline_command();
+		getcommand = getline_c();
 		if (getcommand)
 		{
 			pathValue++;
-			user_command = _get_token(getcommand);
+			user_command = tokenget(getcommand);
 			if (!user_command)
 			{
 				free(getcommand);
@@ -27,11 +27,11 @@ int main(int ac, char **av, char **env)
 			if ((!_strcmp(user_command[0], "exit")) && user_command[1] == NULL)
 				_exit_command(user_command, getcommand, _exit);
 			if (!_strcmp(user_command[0], "env"))
-				_getenv(env);
+				envget(env);
 			else
 			{
-				n = _values_path(&user_command[0], env);
-				_exit = _fork_fun(user_command, av, env, getcommand, pathValue, n);
+				n = pathv(&user_command[0], env);
+				_exit = fork_create(user_command, av, env, getcommand, pathValue, n);
 				if (n == 0)
 					free(user_command[0]);
 			}

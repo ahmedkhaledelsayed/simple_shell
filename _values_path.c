@@ -1,11 +1,11 @@
 #include "shell.h"
 /**
- * _values_path - separate the path in new strings.
+ * pathv - separate the path in new strings.
  * @arg: command input of user.
  * @env: enviroment.
  * Return:  a pointer to strings.
  */
-int _values_path(char **arg, char **env)
+int pathv(char **arg, char **env)
 {
 	char *token = NULL, *path_rela = NULL, *path_absol = NULL;
 	size_t value_path, command;
@@ -13,7 +13,7 @@ int _values_path(char **arg, char **env)
 
 	if (stat(*arg, &stat_lineptr) == 0)
 		return (-1);
-	path_rela = _get_path(env);
+	path_rela = path_func(env);
 	if (!path_rela)
 		return (-1);
 	token = _strtok(path_rela, ":");

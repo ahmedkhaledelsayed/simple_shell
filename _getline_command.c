@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
- * _getline_command - print "#cisfun$ " and wait for the user type something.
+ * getline_c - print "#cisfun$ " and wait for the user type something.
  * Return: line of string input for user
  */
 
-char *_getline_command(void)
+char *getline_c(void)
 {
 	char *lineptr = NULL;
 	size_t charter_user = 0;
