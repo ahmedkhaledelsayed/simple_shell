@@ -12,10 +12,14 @@ int _path_v(char **arg, char **env)
 	struct stat stat_lineptr;
 
 	if (stat(*arg, &stat_lineptr) == 0)
+	{
 		return (-1);
+	}
 	relativepath = _get_path(env);
 	if (!relativepath)
+	{
 		return (-1);
+	}
 	token = _strtok(relativepath, ":");
 	command = _strlen(*arg);
 	while (token)

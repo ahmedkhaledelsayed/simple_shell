@@ -24,7 +24,9 @@ int _fork(char **arg, char **av, char **env, char *lineptr, int np, int c)
 		{
 			fprintf(stderr, format, av[0], np, arg[0]);
 			if (!c)
+			{
 				free(arg[0]);
+			}
 			free(arg);
 			free(lineptr);
 			exit(errno);
@@ -35,7 +37,9 @@ int _fork(char **arg, char **av, char **env, char *lineptr, int np, int c)
 		wait(&status);
 
 		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+		{
 			return (WEXITSTATUS(status));
+		}
 	}
 	return (0);
 }

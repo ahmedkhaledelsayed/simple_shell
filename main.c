@@ -25,22 +25,30 @@ int main(int ac, char **av, char **env)
 				continue;
 			}
 			if ((!_strcmp(user_command[0], "exit")) && user_command[1] == NULL)
+			{
 				_exit_fun(user_command, getcommand, _exit);
+			}
 			if (!_strcmp(user_command[0], "env"))
+			{
 				_getenv(env);
+			}
 			else
 			{
 				n = _path_v(&user_command[0], env);
 				_exit = _fork(user_command, av, env, getcommand, pathValue, n);
 				if (n == 0)
+				{
 					free(user_command[0]);
+				}
 			}
 			free(user_command);
 		}
 		else
 		{
 			if (isatty(STDIN_FILENO))
+			{
 				write(STDOUT_FILENO, "\n", 1);
+			}
 			exit(_exit);
 		}
 		free(getcommand);

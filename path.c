@@ -13,14 +13,18 @@ char *_get_path(char **env)
 	for (i = 0; _strncmp(env[i], "PATH=", 5); i++)
 		;
 	if (env[i] == NULL)
+	{
 		return (NULL);
+	}
 
 	for (counter = 5; env[i][var]; var++, counter++)
 		;
 	path = malloc(sizeof(char) * (counter + 1));
 
 	if (path == NULL)
+	{
 		return (NULL);
+	}
 
 	for (var = 5, counter = 0; env[i][var]; var++, counter++)
 		path[counter] = env[i][var];
