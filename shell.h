@@ -21,12 +21,12 @@ char *_strcat(char *dest, char *src);
 int _putchar(char c);
 
 char *_get_path(char **env);
-int _values_path(char **arg, char **env);
-char *_getline_command(void);
-void _getenv(char **env);
-char **_get_token(char *lineptr);
-void _exit_command(char **args, char *lineptr, int _exit);
-int _fork_fun(char **arg, char **av, char **env,
+int _path_values(char **arg, char **env);
+char *_getline(void);
+void _envget(char **env);
+char **_token(char *lineptr);
+void _exit(char **args, char *lineptr, int _exit);
+int _fork(char **arg, char **av, char **env,
 char *lineptr, int np, int c);
 char *_strtok(char *str, const char *delim);
 
