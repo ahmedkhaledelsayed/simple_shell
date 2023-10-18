@@ -7,10 +7,10 @@
 
 char **_token(char *lineptr)
 {
-	char **user_command = NULL;
+	char **command = NULL;
 	char *token = NULL;
 	size_t i = 0;
-	int size = 0;
+	int s = 0;
 
 	if (lineptr == NULL)
 		return (NULL);
@@ -18,20 +18,20 @@ char **_token(char *lineptr)
 	for (i = 0; lineptr[i]; i++)
 	{
 		if (lineptr[i] == ' ')
-			size++;
+			s++;
 	}
-	if ((size + 1) == _strlen(lineptr))
+	if ((s + 1) == _strlen(lineptr))
 		return (NULL);
-	user_command = malloc(sizeof(char *) * (size + 2));
-	if (user_command == NULL)
+	command = malloc(sof(char *) * (s + 2));
+	if (command == NULL)
 		return (NULL);
 
 	token = _strtok(lineptr, " \n\t\r");
 	for (i = 0; token != NULL; i++)
 	{
-		user_command[i] = token;
+		command[i] = token;
 		token = _strtok(NULL, " \n\t\r");
 	}
-	user_command[i] = NULL;
-	return (user_command);
+	command[i] = NULL;
+	return (command);
 }
