@@ -7,39 +7,39 @@
  */
 int _path_v(char **arg, char **env)
 {
-	char *token = NULL, *path_rela = NULL, *path_absol = NULL;
+	char *token = NULL, *relativepath = NULL, *absolutepath = NULL;
 	size_t value_path, command;
 	struct stat stat_lineptr;
 
 	if (stat(*arg, &stat_lineptr) == 0)
 		return (-1);
-	path_rela = _get_path(env);
-	if (!path_rela)
+	relativepath = _get_path(env);
+	if (!relativepath)
 		return (-1);
-	token = _strtok(path_rela, ":");
+	token = _strtok(relativepath, ":");
 	command = _strlen(*arg);
 	while (token)
 	{
 		value_path = _strlen(token);
-		path_absol = malloc(sizeof(char) * (value_path + command + 2));
-		if (!path_absol)
+		absolutepath = malloc(sizeof(char) * (value_path + command + 2));
+		if (!absolutepath)
 		{
-			free(path_rela);
+			free(relativepath);
 			return (-1);
 		}
-		path_absol = _strcpy(path_absol, token);
-		_strcat(path_absol, "/");
-		_strcat(path_absol, *arg);
+		absolutepath = _strcpy(absolutepath, token);
+		_strcat(absolutepath, "/");
+		_strcat(absolutepath, *arg);
 
-		if (stat(path_absol, &stat_lineptr) == 0)
+		if (stat(absolutepath, &stat_lineptr) == 0)
 		{
-			*arg = path_absol;
-			free(path_rela);
+			*arg = absolutepath;
+			free(relativepath);
 			return (0);
 		}
-		free(path_absol);
+		free(absolutepath);
 		token = _strtok(NULL, ":");
 	}
-	free(path_rela);
+	free(relativepath);
 	return (-1);
 }
